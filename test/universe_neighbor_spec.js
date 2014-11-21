@@ -20,6 +20,12 @@ describe("Test universe", function() {
                 universe.setLiveCell(0, 1);
                 expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(1);
             });
+
+            it("should has 2 live neighbor", function() {
+                universe.setLiveCell(0, 1);
+                universe.setLiveCell(1, 0);
+                expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(2);
+            });
         });
     });
 });
