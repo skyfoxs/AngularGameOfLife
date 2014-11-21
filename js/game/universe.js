@@ -10,9 +10,16 @@ angular.module("GameOfLife").factory("Universe", function() {
             var total = 0;
             for (var row = currentRow; row <= currentRow + 1; row++)
                 for (var column = currentColumn; column <= currentColumn + 1; column++)
-                    total += !(row == currentRow && column == currentColumn) && this.cells[row][column] ? 1 : 0;
+                    if (notCurrentCell(row, column, currentRow, currentColumn)) {
+                        total += this.cells[row][column] ? 1 : 0;
+                    }
+
             return total;
         };
+
+        function notCurrentCell(row, column, currentRow, currentColumn) {
+            return !(row == currentRow && column == currentColumn);
+        }
 
         this.getNextGenerationCellState = function(currentCellState, totalLiveNeighbor) {
             var state = {
