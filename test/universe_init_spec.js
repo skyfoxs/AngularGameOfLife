@@ -18,5 +18,14 @@ describe("Test universe", function() {
                 [false, false]
             ]);
         });
+
+        it("should init with given dimention correctly", function() {
+            var universe = new Universe(3, 3);
+            expect(universe.cells).toEqual([
+                [false, false, false],
+                [false, false, false],
+                [false, false, false]
+            ]);
+        });
     });
 });

@@ -4,11 +4,7 @@ angular.module("GameOfLife").factory("Universe", function() {
         DEAD: false
     };
 
-    return function Universe() {
-        this.cells = [
-            [false, false],
-            [false, false]
-        ];
+    return function Universe(height, width) {
 
         this.getNextGenerationCellState = function(currentCellState, totalLiveNeighbor) {
             var state = {
@@ -17,5 +13,16 @@ angular.module("GameOfLife").factory("Universe", function() {
             };
             return totalLiveNeighbor in state ? state[totalLiveNeighbor] : cell.DEAD;
         };
+
+        this.init = function(height, width) {
+            this.cells = [];
+            for (var r = 0; r < height; r++) {
+                this.cells.push([]);
+                for (var c = 0; c < width; c++)
+                    this.cells[r].push(cell.DEAD);
+            }
+        };
+
+        this.init(height, width);
     };
 });
