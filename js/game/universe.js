@@ -6,14 +6,11 @@ angular.module("GameOfLife").factory("Universe", function() {
 
     return function Universe(height, width) {
 
-        this.getTotalLiveNeighbor = function(row, column) {
+        this.getTotalLiveNeighbor = function(currentRow, currentColumn) {
             var total = 0;
-            if (this.cells[row][column + 1])
-                total += 1;
-            if (this.cells[row + 1][column])
-                total += 1;
-            if (this.cells[row + 1][column + 1])
-                total += 1;
+            for (var row = currentRow; row <= currentRow + 1; row++)
+                for (var column = currentColumn; column <= currentColumn + 1; column++)
+                    total += this.cells[row][column] ? 1 : 0;
             return total;
         };
 
