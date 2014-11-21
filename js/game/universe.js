@@ -6,6 +6,10 @@ angular.module("GameOfLife").factory("Universe", function() {
 
     return function Universe(height, width) {
 
+        this.getTotalLiveNeighbor = function() {
+            return 0;
+        };
+
         this.getNextGenerationCellState = function(currentCellState, totalLiveNeighbor) {
             var state = {
                 2: currentCellState,
