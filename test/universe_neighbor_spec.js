@@ -66,5 +66,16 @@ describe("Test universe", function() {
                 expect(universe.getTotalLiveNeighbor(1, 0)).toEqual(2);
             });
         });
+
+        describe("middle", function() {
+            it("should has 4 live neighbor", function() {
+                universe.setLiveCell(0, 0);
+                universe.setLiveCell(1, 1);
+                universe.setLiveCell(0, 1);
+                universe.setLiveCell(1, 0);
+                universe.setLiveCell(2, 1);
+                expect(universe.getTotalLiveNeighbor(1, 1)).toEqual(4);
+            });
+        });
     });
 });
