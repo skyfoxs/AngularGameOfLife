@@ -33,6 +33,10 @@ describe("Test universe", function() {
             it("should dead when has 2 live neighbor", function() {
                 expect(universe.getNextGenerationCellState(cell.DEAD, 2)).toEqual(cell.DEAD);
             });
+
+            it("should alive when has 3 live neighbor", function() {
+                expect(universe.getNextGenerationCellState(cell.DEAD, 3)).toEqual(cell.LIVE);
+            });
         });
     });
 });
