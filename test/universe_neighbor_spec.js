@@ -101,5 +101,13 @@ describe("Test universe", function() {
                 expect(universe.getTotalLiveNeighbor(3, 1)).toEqual(2);
             });
         });
+
+        describe("bottom right", function() {
+            it("should has 2 live neighbors", function() {
+                universe.setLiveCell(2, 2);
+                universe.setLiveCell(3, 2);
+                expect(universe.getTotalLiveNeighbor(3, 3)).toEqual(2);
+            });
+        });
     });
 });
