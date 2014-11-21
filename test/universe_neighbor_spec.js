@@ -33,6 +33,12 @@ describe("Test universe", function() {
                 universe.setLiveCell(1, 1);
                 expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(3);
             });
+
+            it("should not count itself as live neighbor", function() {
+                universe.setLiveCell(0, 0);
+                universe.setLiveCell(0, 1);
+                expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(1);
+            });
         });
     });
 });
