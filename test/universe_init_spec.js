@@ -1,5 +1,8 @@
 describe("Test universe", function() {
-    var Universe;
+    var Universe,
+        cell = {
+            LIVE: true
+        };
 
     beforeEach(function() {
         module("GameOfLife");
@@ -26,6 +29,14 @@ describe("Test universe", function() {
                 [false, false, false],
                 [false, false, false]
             ]);
+        });
+    });
+
+    describe("set live cell", function() {
+        it("should set live cell correctly", function() {
+            var universe = new Universe(3, 3);
+            universe.setLiveCell(1, 1);
+            expect(universe.cells[1][1]).toEqual(cell.LIVE);
         });
     });
 });

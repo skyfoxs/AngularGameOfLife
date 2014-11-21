@@ -14,6 +14,10 @@ angular.module("GameOfLife").factory("Universe", function() {
             return totalLiveNeighbor in state ? state[totalLiveNeighbor] : cell.DEAD;
         };
 
+        this.setLiveCell = function(r, c) {
+            this.cells[r][c] = cell.LIVE;
+        };
+
         this.init = function(height, width) {
             this.cells = [];
             for (var r = 0; r < height; r++) {
