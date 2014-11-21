@@ -1,13 +1,19 @@
 {
-    "name": "AngularGameOfLife",
-    "version": "1.0.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/skyfoxs/AngularGameOfLife.git"
-    },
-    "author": "Supakit Thanadittagorn",
-    "bugs": {
-        "url": "https://github.com/skyfoxs/AngularGameOfLife/issues"
-    },
-    "homepage": "https://github.com/skyfoxs/AngularGameOfLife"
+  "name": "AngularGameOfLife",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skyfoxs/AngularGameOfLife.git"
+  },
+  "author": "Supakit Thanadittagorn",
+  "bugs": {
+    "url": "https://github.com/skyfoxs/AngularGameOfLife/issues"
+  },
+  "homepage": "https://github.com/skyfoxs/AngularGameOfLife",
+  "devDependencies": {
+    "jasmine-core": "^2.1.2",
+    "karma": "^0.12.25",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-jasmine": "^0.3.0"
+  }
 }
