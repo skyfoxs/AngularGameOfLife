@@ -21,13 +21,13 @@ describe("Test universe", function() {
                 expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(1);
             });
 
-            it("should has 2 live neighbor", function() {
+            it("should has 2 live neighbors", function() {
                 universe.setLiveCell(0, 1);
                 universe.setLiveCell(1, 0);
                 expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(2);
             });
 
-            it("should has 3 live neighbor", function() {
+            it("should has 3 live neighbors", function() {
                 universe.setLiveCell(0, 1);
                 universe.setLiveCell(1, 0);
                 universe.setLiveCell(1, 1);
@@ -42,7 +42,7 @@ describe("Test universe", function() {
         });
 
         describe("top", function() {
-            it("should has 3 live neighbor", function() {
+            it("should has 3 live neighbors", function() {
                 universe.setLiveCell(0, 0);
                 universe.setLiveCell(1, 0);
                 universe.setLiveCell(1, 1);
@@ -51,7 +51,7 @@ describe("Test universe", function() {
         });
 
         describe("top right", function() {
-            it("should has 3 live neighbor", function() {
+            it("should has 3 live neighbors", function() {
                 universe.setLiveCell(0, 2);
                 universe.setLiveCell(1, 2);
                 universe.setLiveCell(1, 3);
@@ -60,7 +60,7 @@ describe("Test universe", function() {
         });
 
         describe("left", function() {
-            it("should has 2 live neighbor", function() {
+            it("should has 2 live neighbors", function() {
                 universe.setLiveCell(0, 0);
                 universe.setLiveCell(1, 1);
                 expect(universe.getTotalLiveNeighbor(1, 0)).toEqual(2);
@@ -68,7 +68,7 @@ describe("Test universe", function() {
         });
 
         describe("middle", function() {
-            it("should has 4 live neighbor", function() {
+            it("should has 4 live neighbors", function() {
                 universe.setLiveCell(0, 0);
                 universe.setLiveCell(1, 1);
                 universe.setLiveCell(0, 1);
@@ -79,7 +79,7 @@ describe("Test universe", function() {
         });
 
         describe("right", function() {
-            it("should has 2 live neighbor", function() {
+            it("should has 2 live neighbors", function() {
                 universe.setLiveCell(0, 2);
                 universe.setLiveCell(1, 2);
                 expect(universe.getTotalLiveNeighbor(1, 3)).toEqual(2);
