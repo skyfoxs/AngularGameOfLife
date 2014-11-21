@@ -12,6 +12,8 @@ angular.module("GameOfLife").factory("Universe", function() {
                 total += 1;
             if (this.cells[row + 1][column])
                 total += 1;
+            if (this.cells[row + 1][column + 1])
+                total += 1;
             return total;
         };
 

@@ -26,6 +26,13 @@ describe("Test universe", function() {
                 universe.setLiveCell(1, 0);
                 expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(2);
             });
+
+            it("should has 3 live neighbor", function() {
+                universe.setLiveCell(0, 1);
+                universe.setLiveCell(1, 0);
+                universe.setLiveCell(1, 1);
+                expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(3);
+            });
         });
     });
 });
