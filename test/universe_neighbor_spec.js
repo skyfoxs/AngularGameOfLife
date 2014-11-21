@@ -40,5 +40,14 @@ describe("Test universe", function() {
                 expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(1);
             });
         });
+
+        describe("top", function() {
+            it("should has 3 live neighbor", function() {
+                universe.setLiveCell(0, 0);
+                universe.setLiveCell(1, 0);
+                universe.setLiveCell(1, 1);
+                expect(universe.getTotalLiveNeighbor(0, 1)).toEqual(3);
+            });
+        });
     });
 });

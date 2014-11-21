@@ -9,7 +9,7 @@ angular.module("GameOfLife").factory("Universe", function() {
         this.getTotalLiveNeighbor = function(currentRow, currentColumn) {
             var total = 0;
             for (var row = currentRow; row <= currentRow + 1; row++)
-                for (var column = currentColumn; column <= currentColumn + 1; column++)
+                for (var column = currentColumn - 1; column <= currentColumn + 1; column++)
                     if (notCurrentCell(row, column, currentRow, currentColumn)) {
                         total += this.cells[row][column] ? 1 : 0;
                     }
