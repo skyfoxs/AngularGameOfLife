@@ -1,0 +1,13 @@
+{
+    "name": "AngularGameOfLife",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/skyfoxs/AngularGameOfLife.git"
+    },
+    "author": "Supakit Thanadittagorn",
+    "bugs": {
+        "url": "https://github.com/skyfoxs/AngularGameOfLife/issues"
+    },
+    "homepage": "https://github.com/skyfoxs/AngularGameOfLife"
+}
