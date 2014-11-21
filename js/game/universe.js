@@ -10,7 +10,7 @@ angular.module("GameOfLife").factory("Universe", function() {
             var total = 0;
             for (var row = currentRow - 1; row <= currentRow + 1; row++)
                 for (var column = currentColumn - 1; column <= currentColumn + 1; column++)
-                    if (positionIsValid(row, column, currentRow, currentColumn, height)) {
+                    if (positionIsValid(row, column, currentRow, currentColumn, this.height)) {
                         total += this.cells[row][column] ? 1 : 0;
                     }
 
