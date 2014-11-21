@@ -5,6 +5,11 @@ angular.module("GameOfLife").factory("Universe", function() {
     };
 
     return function Universe() {
+        this.cells = [
+            [false, false],
+            [false, false]
+        ];
+
         this.getNextGenerationCellState = function(currentCellState, totalLiveNeighbor) {
             var state = {
                 2: currentCellState,
