@@ -28,5 +28,11 @@ describe("Test universe", function() {
                 expect(universe.getNextGenerationCellState(cell.LIVE, 3)).toEqual(cell.LIVE);
             });
         });
+
+        describe("dead cell", function() {
+            it("should dead when has 2 live neighbor", function() {
+                expect(universe.getNextGenerationCellState(cell.DEAD, 2)).toEqual(cell.DEAD);
+            });
+        });
     });
 });
