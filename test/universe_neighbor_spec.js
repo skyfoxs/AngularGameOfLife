@@ -85,5 +85,13 @@ describe("Test universe", function() {
                 expect(universe.getTotalLiveNeighbor(1, 3)).toEqual(2);
             });
         });
+
+        describe("bottom left", function() {
+            it("should has 2 live neighbors", function() {
+                universe.setLiveCell(2, 0);
+                universe.setLiveCell(3, 1);
+                expect(universe.getTotalLiveNeighbor(3, 0)).toEqual(2);
+            });
+        });
     });
 });
