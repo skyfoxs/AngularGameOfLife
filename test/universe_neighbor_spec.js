@@ -15,6 +15,11 @@ describe("Test universe", function() {
             it("should has 0 live neighbor", function() {
                 expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(0);
             });
+
+            it("should has 1 live neighbor", function() {
+                universe.setLiveCell(0, 1);
+                expect(universe.getTotalLiveNeighbor(0, 0)).toEqual(1);
+            });
         });
     });
 });
