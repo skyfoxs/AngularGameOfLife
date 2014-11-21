@@ -10,12 +10,20 @@ angular.module("GameOfLife").factory("Universe", function() {
             var total = 0;
             for (var row = currentRow - 1; row <= currentRow + 1; row++)
                 for (var column = currentColumn - 1; column <= currentColumn + 1; column++)
-                    if (row >= 0 && row < this.height && notCurrentCell(row, column, currentRow, currentColumn)) {
+                    if (positionIsValid(row, column, currentRow, currentColumn, height)) {
                         total += this.cells[row][column] ? 1 : 0;
                     }
 
             return total;
         };
+
+        function positionIsValid(row, column, currentRow, currentColumn, height) {
+            return positionIsInUniverse(row, height) && notCurrentCell(row, column, currentRow, currentColumn);
+        }
+
+        function positionIsInUniverse(row, height) {
+            return row >= 0 && row < height;
+        }
 
         function notCurrentCell(row, column, currentRow, currentColumn) {
             return !(row == currentRow && column == currentColumn);
