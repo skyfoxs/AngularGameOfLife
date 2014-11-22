@@ -32,6 +32,7 @@ function GameController(Universe, $interval) {
 
     this.setGosperGliderGun = function() {
         var cellList = getGosperGliderGunCellList();
+        this.init();
         for (var i = 0; i < cellList.length; i++)
             this.setLiveCell(cellList[i][0], cellList[i][1]);
     };

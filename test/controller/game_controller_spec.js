@@ -1,7 +1,8 @@
 describe("GameController", function() {
     var controller, Universe, $interval,
         cell = {
-            LIVE: true
+            LIVE: true,
+            DEAD: false
         };
 
     beforeEach(function() {
@@ -60,7 +61,23 @@ describe("GameController", function() {
 
     it("should set Gosper Glider Gun pattern when call init example", function() {
         controller.setGosperGliderGun();
-        var expectedCell = [
+        var expectedCell = getGosperGliderGunCellList();
+        for (var i = 0; i < expectedCell.length; i++)
+            expect(controller.universe.cells[expectedCell[i][0]][expectedCell[i][1]]).toEqual(cell.LIVE);
+
+    });
+
+    it("should clear universe before set Gosper Glider Gun pattern", function() {
+        controller.setLiveCell(0, 0);
+        controller.setGosperGliderGun();
+        var expectedCell = getGosperGliderGunCellList();
+        for (var i = 0; i < expectedCell.length; i++)
+            expect(controller.universe.cells[expectedCell[i][0]][expectedCell[i][1]]).toEqual(cell.LIVE);
+        expect(controller.universe.cells[0][0]).toEqual(cell.DEAD);
+    });
+
+    function getGosperGliderGunCellList() {
+        return [
             [7, 3],
             [7, 4],
             [8, 3],
@@ -98,8 +115,5 @@ describe("GameController", function() {
             [5, 37],
             [5, 38]
         ];
-        for (var i = 0; i < expectedCell.length; i++)
-            expect(controller.universe.cells[expectedCell[i][0]][expectedCell[i][1]]).toEqual(cell.LIVE);
-
-    });
+    }
 });
