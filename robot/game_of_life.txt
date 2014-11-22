@@ -11,7 +11,7 @@ ${BROWSER}        gc
 Basic
     When Open Page
     Then Page Should Contain    Game of Life in Javascript and AngularJS
-    And Page Should Contain Universe With 5 Dimension
+    And Page Should Contain Universe With 25 x 50 Dimension
     When Click To Set Live Cell Boat Pattern
     Then Universe Should Display Boat Pattern
 
@@ -25,13 +25,8 @@ Evolve
     Then Universe Should Display Beacon Pattern
 
 *** Keywords ***
-Page Should Contain Universe With ${dimension} Dimension
-    :FOR    ${row}    IN RANGE    0    ${dimension}
-    \      Cell Should Be Visible At Row ${row} For ${dimension} Column
-
-Cell Should Be Visible At Row ${row} For ${total_column} Column
-    :FOR    ${column}    IN RANGE    0    ${total_column}
-    \      Element Should Be Visible     cell-${row}-${column}
+Page Should Contain Universe With ${height} x ${width} Dimension
+    Page Should Contain Element     cell-${height}-${width}
 
 Click To Set Live Cell Boat Pattern
     Click Element    cell-1-1
