@@ -15,7 +15,7 @@ describe("Test universe", function() {
     }
 
     describe("init", function() {
-        it("should init with given dimention correctly", function() {
+        it("should init with given dimension correctly", function() {
             var universe = new Universe(2, 2);
             expect(universe.cells).toEqual([
                 [false, false],
@@ -23,7 +23,7 @@ describe("Test universe", function() {
             ]);
         });
 
-        it("should init with given dimention correctly", function() {
+        it("should init with given dimension correctly", function() {
             var universe = new Universe(3, 3);
             expect(universe.cells).toEqual([
                 [false, false, false],
