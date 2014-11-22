@@ -1,4 +1,5 @@
 angular.module("GameOfLife").factory("Universe", function() {
+    "use strict";
     var cell = {
         LIVE: true,
         DEAD: false

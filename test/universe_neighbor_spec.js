@@ -1,4 +1,5 @@
 describe("Test universe", function() {
+    "use strict";
     var universe;
 
     beforeEach(function() {
