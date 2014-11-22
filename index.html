@@ -17,6 +17,7 @@
 	    Auto Evolve
 	</button>
 	<button id="step-evolve" ng-click="game.nextStep()" ng-disabled="game.isRunning">Next Step Evolve</button>
+	<button id="reset" class="reset" ng-click="game.reset()" ng-disabled="game.isRunning">Reset</button>
 	<div class="container">
 		<div ng-repeat="row in game.universe.cells" style="width: {{ 15 * row.length }}px;margin:0 auto;">
 			<div ng-repeat="cell in row track by $index"

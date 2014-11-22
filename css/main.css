@@ -32,10 +32,6 @@ button {
     -moz-transition: background 0.3s;
     transition: background 0.3s;
 }
-button:hover {
-    cursor: pointer;
-    background: black;
-}
 button.start:before{
     content: "Start ";
 }
@@ -44,6 +40,13 @@ button.stop:before{
 }
 button.stop{
     background: #FBA026;
+}
+button.reset{
+    background: #E25041;
+}
+button:hover {
+    cursor: pointer;
+    background: black;
 }
 button:disabled{
     cursor: not-allowed;

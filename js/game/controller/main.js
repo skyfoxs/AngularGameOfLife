@@ -30,6 +30,10 @@ function GameController(Universe, $interval) {
         }
     };
 
+    this.reset = function() {
+        this.init();
+    };
+
     this.nextStep = function() {
         this.universe.evolve();
     };

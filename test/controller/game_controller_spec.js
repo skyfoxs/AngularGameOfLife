@@ -18,8 +18,15 @@ describe("GameController", function() {
         Universe = _Universe_;
     }
 
-    it("should init with 25x50 dimension universe", function() {
+    it("should init with 25x40 dimension universe", function() {
         var expected = new Universe(25, 40);
+        expect(controller.universe.cells).toEqual(expected.cells);
+    });
+
+    it("should init new universe when call reset", function() {
+        var expected = new Universe(25, 40);
+        controller.universe.setLiveCell(10, 10);
+        controller.reset();
         expect(controller.universe.cells).toEqual(expected.cells);
     });
 

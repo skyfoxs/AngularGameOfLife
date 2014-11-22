@@ -14,6 +14,8 @@ Basic
     And Page Should Contain Universe With 25 x 40 Dimension
     When Click To Set Live Cell Boat Pattern
     Then Universe Should Display Boat Pattern
+    When Click Reset Button
+    Then Universe Should Not Display Boat Pattern
 
 Evolve
     Given Go To    ${HOST}
@@ -25,18 +27,19 @@ Evolve
     Then Universe Should Display Beacon Pattern
 
 Auto Evolve
-    [Documentation]    Click Evolve will set interval for evolve and click again will reset it
+    [Documentation]    Click Evolve will set interval for evolve and click again will reset interval
     Given Go To    ${HOST}
     When Click To Set Live Cell Beacon Pattern
     Then Universe Should Display Beacon Pattern
     When Click Evolve
-    Then Step Evolve Should Be Disabled
-    Then Universe Should Display Beacon Pattern period 2
+    Then Step Evolve Button Should Be Disabled
+    Then Reset Button Should Be Disabled
+    And Universe Should Display Beacon Pattern period 2
     And Universe Should Display Beacon Pattern
     And Universe Should Display Beacon Pattern period 2
     When Click Evolve
-    Then Universe Should Display Beacon Pattern period 2
-    And Universe Should Display Beacon Pattern period 2
+    Then Universe Should Display Beacon Pattern
+    And Universe Should Display Beacon Pattern
 
 *** Keywords ***
 Page Should Contain Universe With ${height} x ${width} Dimension
@@ -55,6 +58,16 @@ Universe Should Display Boat Pattern
     Page Should Contain Element    css=#cell-2-1.active
     Page Should Contain Element    css=#cell-2-3.active
     Page Should Contain Element    css=#cell-3-2.active
+
+Click Reset Button
+    Click Button    reset
+
+Universe Should Not Display Boat Pattern
+    Page Should Not Contain Element    css=#cell-1-1.active
+    Page Should Not Contain Element    css=#cell-1-2.active
+    Page Should Not Contain Element    css=#cell-2-1.active
+    Page Should Not Contain Element    css=#cell-2-3.active
+    Page Should Not Contain Element    css=#cell-3-2.active
 
 Click To Set Live Cell Beacon Pattern
     Click Element    cell-1-1
@@ -92,8 +105,11 @@ Universe Should Display Beacon Pattern period 2
 Click Evolve
     Click Button    evolve
 
-Step Evolve Should Be Disabled
+Step Evolve Button Should Be Disabled
     Element Should Be Disabled    step-evolve
+
+Reset Button Should Be Disabled
+    Element Should Be Disabled    reset
 
 Open Page
     Open Browser    ${HOST}${PAGE}   browser=${BROWSER}
