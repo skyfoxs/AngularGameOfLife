@@ -7,7 +7,17 @@ angular.module("GameOfLife").factory("Universe", function() {
     return function Universe(height, width) {
 
         this.evolve = function() {
-
+            var evolvedCell = [];
+            for (var row = 0; row < this.height; row++) {
+                evolvedCell.push(this.cells[row].slice(0))
+                for (var column = 0; column < this.width; column++) {
+                    evolvedCell[row][column] = this.getNextGenerationCellState(
+                        this.cells[row][column],
+                        this.getTotalLiveNeighbor(row, column)
+                    );
+                }
+            }
+            this.cells = evolvedCell;
         };
 
         this.getTotalLiveNeighbor = function(currentRow, currentColumn) {
@@ -47,6 +57,7 @@ angular.module("GameOfLife").factory("Universe", function() {
 
         this.init = function(height, width) {
             this.height = height;
+            this.width = width;
             this.cells = [];
             for (var r = 0; r < height; r++) {
                 this.cells.push([]);

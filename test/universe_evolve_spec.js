@@ -1,5 +1,9 @@
 describe("Test universe", function() {
-    var universe;
+    var universe,
+        cell = {
+            LIVE: true,
+            DEAD: false
+        };
 
     beforeEach(function() {
         module("GameOfLife");
@@ -20,6 +24,24 @@ describe("Test universe", function() {
             expected = universe.cells.slice(0);
             universe.evolve();
             expect(universe.cells).toEqual(expected);
+        });
+
+        it("should evolve correctly", function() {
+            universe.setLiveCell(2, 2);
+            universe.setLiveCell(2, 3);
+            universe.setLiveCell(2, 4);
+            universe.setLiveCell(3, 1);
+            universe.setLiveCell(3, 2);
+            universe.setLiveCell(3, 3);
+            universe.evolve();
+            expect(universe.cells).toEqual([
+                [cell.DEAD, cell.DEAD, cell.DEAD, cell.DEAD, cell.DEAD, cell.DEAD],
+                [cell.DEAD, cell.DEAD, cell.DEAD, cell.LIVE, cell.DEAD, cell.DEAD],
+                [cell.DEAD, cell.LIVE, cell.DEAD, cell.DEAD, cell.LIVE, cell.DEAD],
+                [cell.DEAD, cell.LIVE, cell.DEAD, cell.DEAD, cell.LIVE, cell.DEAD],
+                [cell.DEAD, cell.DEAD, cell.LIVE, cell.DEAD, cell.DEAD, cell.DEAD],
+                [cell.DEAD, cell.DEAD, cell.DEAD, cell.DEAD, cell.DEAD, cell.DEAD],
+            ]);
         });
     });
 });
