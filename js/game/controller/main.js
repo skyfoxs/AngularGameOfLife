@@ -10,5 +10,9 @@ function GameController(Universe) {
         this.universe = new Universe(5, 5);
     }
 
+    this.setLiveCell = function(x, y) {
+        this.universe.setLiveCell(x, y);
+    };
+
     this.init();
 }

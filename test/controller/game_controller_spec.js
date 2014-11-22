@@ -1,5 +1,8 @@
 describe("GameController", function() {
-    var controller, Universe;
+    var controller, Universe,
+        cell = {
+            LIVE: true
+        };
 
     beforeEach(function() {
         module("GameOfLife");
@@ -14,5 +17,10 @@ describe("GameController", function() {
     it("should init with 5x5 dimension universe", function() {
         var expected = new Universe(5, 5);
         expect(controller.universe.cells).toEqual(expected.cells);
+    });
+
+    it("should set cell to alive when click on cell", function() {
+        controller.setLiveCell(1, 1);
+        expect(controller.universe.cells[1][1]).toEqual(cell.LIVE);
     });
 });
