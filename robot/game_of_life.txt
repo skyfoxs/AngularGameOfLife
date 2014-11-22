@@ -38,8 +38,7 @@ Auto Evolve
     And Universe Should Display Beacon Pattern
     And Universe Should Display Beacon Pattern period 2
     When Click Evolve
-    Then Universe Should Display Beacon Pattern
-    And Universe Should Display Beacon Pattern
+    Then Step Evolve Button Should Be Enabled
 
 *** Keywords ***
 Page Should Contain Universe With ${height} x ${width} Dimension
@@ -108,6 +107,9 @@ Click Evolve
 Step Evolve Button Should Be Disabled
     Element Should Be Disabled    step-evolve
 
+Step Evolve Button Should Be Enabled
+    Element Should Be Enabled     step-evolve
+
 Reset Button Should Be Disabled
     Element Should Be Disabled    reset
 
@@ -117,4 +119,4 @@ Open Page
 
 Wait
     [Arguments]    @{args}
-    Wait Until Keyword Succeeds    1s    0.2s     @{args}
+    Wait Until Keyword Succeeds    2s    0.2s     @{args}

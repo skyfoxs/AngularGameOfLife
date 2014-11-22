@@ -11,13 +11,16 @@
 </head>
 <body ng-controller="GameController as game" class="align-center">
 	<h1>Game of Life with Javascript and AngularJS</h1>
+	<button id="example" class="example margin-right" ng-click="game.setGosperGliderGun()" ng-disabled="game.isRunning">
+		Gosper Glider Gun
+	</button>
 	<button id="evolve"
 			ng-class="{'start': !game.isRunning, 'stop': game.isRunning}"
 	        ng-click="game.evolve()">
 	    Auto Evolve
 	</button>
 	<button id="step-evolve" ng-click="game.nextStep()" ng-disabled="game.isRunning">Next Step Evolve</button>
-	<button id="reset" class="reset" ng-click="game.reset()" ng-disabled="game.isRunning">Reset</button>
+	<button id="reset" class="red" ng-click="game.reset()" ng-disabled="game.isRunning">Reset</button>
 	<div class="container">
 		<div ng-repeat="row in game.universe.cells" style="width: {{ 15 * row.length }}px;margin:0 auto;">
 			<div ng-repeat="cell in row track by $index"
