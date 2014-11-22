@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="GameOfLife">
 <head>
 	<meta charset="UTF-8">
 	<title>Game of Life in Javascript and AngularJS</title>
+	<script src="js/angular/angular.min.js"></script>
+	<script src="js/game/module.js"></script>
+	<script src="js/game/controller/main.js"></script>
+	<script src="js/game/universe.js"></script>
+	<style>
+		.cell{
+			width: 8px;
+			height: 8px;
+			border: 1px solid #ccc;
+			float: left;
+		}
+	</style>
 </head>
-<body>
+<body ng-controller="GameController as game">
 	<h1>Game of Life in Javascript and AngularJS</h1>
+	<div>
+		<div ng-repeat="row in game.universe.cells" style="width: {{ 10 * game.universe.cells.length }}px;">
+			<div ng-repeat="cell in row track by $index"
+			     id="cell-{{ $parent.$index }}-{{ $index }}"
+			     class="cell">
+			</div>
+		</div>
+	</div>
 </body>
 </html>

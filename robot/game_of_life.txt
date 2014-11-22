@@ -11,9 +11,17 @@ ${BROWSER}        gc
 *** Test Cases ***
 Basic
     Page Should Contain    Game of Life in Javascript and AngularJS
-
+    Page Should Contain Universe With 5 Dimension
 
 *** Keywords ***
+Page Should Contain Universe With ${dimension} Dimension
+    :FOR    ${row}    IN RANGE    0    ${dimension}
+    \      Cell Should Be Visible At Row ${row} For ${dimension} Column
+
+Cell Should Be Visible At Row ${row} For ${total_column} Column
+    :FOR    ${column}    IN RANGE    0    ${total_column}
+    \      Element Should Be Visible     cell-${row}-${column}
+
 Open Page
     Open Browser    ${HOST}${PAGE}   browser=${BROWSER}
     Maximize Browser Window
