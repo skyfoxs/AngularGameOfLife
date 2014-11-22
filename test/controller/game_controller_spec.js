@@ -23,4 +23,10 @@ describe("GameController", function() {
         controller.setLiveCell(1, 1);
         expect(controller.universe.cells[1][1]).toEqual(cell.LIVE);
     });
+
+    it("should call evolve when call next step", function() {
+        spyOn(controller.universe, "evolve");
+        controller.nextStep();
+        expect(controller.universe.evolve).toHaveBeenCalled();
+    });
 });

@@ -14,5 +14,9 @@ function GameController(Universe) {
         this.universe.setLiveCell(x, y);
     };
 
+    this.nextStep = function() {
+        this.universe.evolve();
+    };
+
     this.init();
 }

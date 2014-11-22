@@ -50,7 +50,8 @@ function jshintConfig() {
                 inject: true,
                 describe: true,
                 it: true,
-                expect: true
+                expect: true,
+                spyOn: true
             }
         }
     };

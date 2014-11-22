@@ -21,6 +21,7 @@
 </head>
 <body ng-controller="GameController as game">
 	<h1>Game of Life in Javascript and AngularJS</h1>
+	<button id="step-evolve" ng-click="game.nextStep()">Next Step Evolve</button>
 	<div>
 		<div ng-repeat="row in game.universe.cells" style="width: {{ 10 * game.universe.cells.length }}px;">
 			<div ng-repeat="cell in row track by $index"

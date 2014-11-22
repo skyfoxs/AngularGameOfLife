@@ -12,8 +12,15 @@ Basic
     When Open Page
     Then Page Should Contain    Game of Life in Javascript and AngularJS
     And Page Should Contain Universe With 5 Dimension
-    When Click To Set Live Cell Boat Pattern At Position (1, 1)
-    Then Universe Should Display Boat Pattern At Position (1, 1) Correctly
+    When Click To Set Live Cell Boat Pattern
+    Then Universe Should Display Boat Pattern
+
+Evolve
+    Given Go To    ${HOST}
+    When Click To Set Live Cell Beacon Pattern
+    Then Universe Should Display Beacon Pattern
+    When Click Step Evolve
+    Then Universe Should Display Beacon Pattern period 2
 
 *** Keywords ***
 Page Should Contain Universe With ${dimension} Dimension
@@ -24,19 +31,52 @@ Cell Should Be Visible At Row ${row} For ${total_column} Column
     :FOR    ${column}    IN RANGE    0    ${total_column}
     \      Element Should Be Visible     cell-${row}-${column}
 
-Click To Set Live Cell Boat Pattern At Position (1, 1)
+Click To Set Live Cell Boat Pattern
     Click Element    cell-1-1
     Click Element    cell-1-2
     Click Element    cell-2-1
     Click Element    cell-2-3
     Click Element    cell-3-2
 
-Universe Should Display Boat Pattern At Position (${x}, ${y}) Correctly
+Universe Should Display Boat Pattern
     Element Should Be Visible    css=#cell-1-1.active
     Element Should Be Visible    css=#cell-1-2.active
     Element Should Be Visible    css=#cell-2-1.active
     Element Should Be Visible    css=#cell-2-3.active
     Element Should Be Visible    css=#cell-3-2.active
+
+Click To Set Live Cell Beacon Pattern
+    Click Element    cell-1-1
+    Click Element    cell-1-2
+    Click Element    cell-2-1
+    Click Element    cell-2-2
+    Click Element    cell-3-3
+    Click Element    cell-3-4
+    Click Element    cell-4-3
+    Click Element    cell-4-4
+
+Click Step Evolve
+    Click Button    step-evolve
+
+Universe Should Display Beacon Pattern
+    Page Should Contain Element    css=#cell-1-1.active
+    Page Should Contain Element    css=#cell-1-2.active
+    Page Should Contain Element    css=#cell-2-1.active
+    Page Should Contain Element    css=#cell-2-2.active
+    Page Should Contain Element    css=#cell-3-3.active
+    Page Should Contain Element    css=#cell-3-4.active
+    Page Should Contain Element    css=#cell-4-3.active
+    Page Should Contain Element    css=#cell-4-4.active
+
+Universe Should Display Beacon Pattern period 2
+    Page Should Contain Element    css=#cell-1-1.active
+    Page Should Contain Element    css=#cell-1-2.active
+    Page Should Contain Element    css=#cell-2-1.active
+    Page Should Not Contain Element    css=#cell-2-2.active
+    Page Should Not Contain Element    css=#cell-3-3.active
+    Page Should Contain Element    css=#cell-3-4.active
+    Page Should Contain Element    css=#cell-4-3.active
+    Page Should Contain Element    css=#cell-4-4.active
 
 Open Page
     Open Browser    ${HOST}${PAGE}   browser=${BROWSER}
