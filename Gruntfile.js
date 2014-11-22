@@ -13,13 +13,66 @@ module.exports = function(grunt) {
                 reporters: 'dots'
             }
         },
+        jshint: jshintConfig(),
         connect: serverConfig()
     });
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.registerTask('serve', ['connect:server']);
-    grunt.registerTask('default', ['karma:dev']);
+    grunt.registerTask('ci', ['jshint', 'karma:ci']);
+    grunt.registerTask('dev', ['jshint', 'karma:dev']);
+    grunt.registerTask('default', ['jshint', 'karma:dev']);
+}
+
+function jshintConfig() {
+    var code, spec, jshint;
+
+    code = {
+        files: {
+            src: ['js/game/*.js']
+        },
+        options: {
+            globals: {
+                angular: true
+            }
+        }
+    };
+    spec = {
+        files: {
+            src: ['test/**/*.js']
+        },
+        options: {
+            globals: {
+                beforeEach: true,
+                module: true,
+                inject: true,
+                describe: true,
+                it: true,
+                expect: true
+            }
+        }
+    };
+    jshint = {
+        code: code,
+        spec: spec,
+        options: {
+            browser: true,
+            eqeqeq: true,
+            indent: 4,
+            trailing: true,
+            latedef: 'nofunc',
+            maxdepth: 3,
+            unused: true,
+            nonbsp: true,
+            freeze: true,
+            undef: true,
+            maxcomplexity: 9,
+            reporter: require('jshint-stylish')
+        }
+    };
+    return jshint;
 }
 
 function serverConfig() {

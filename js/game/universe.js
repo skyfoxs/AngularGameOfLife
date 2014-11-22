@@ -9,7 +9,7 @@ angular.module("GameOfLife").factory("Universe", function() {
         this.evolve = function() {
             var evolvedCell = [];
             for (var row = 0; row < this.height; row++) {
-                evolvedCell.push(this.cells[row].slice(0))
+                evolvedCell.push(this.cells[row].slice(0));
                 for (var column = 0; column < this.width; column++) {
                     evolvedCell[row][column] = this.getNextGenerationCellState(
                         this.cells[row][column],
@@ -40,7 +40,7 @@ angular.module("GameOfLife").factory("Universe", function() {
         }
 
         function notCurrentCell(row, column, currentRow, currentColumn) {
-            return !(row == currentRow && column == currentColumn);
+            return !(row === currentRow && column === currentColumn);
         }
 
         this.getNextGenerationCellState = function(currentCellState, totalLiveNeighbor) {
