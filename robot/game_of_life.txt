@@ -21,6 +21,8 @@ Evolve
     Then Universe Should Display Beacon Pattern
     When Click Step Evolve
     Then Universe Should Display Beacon Pattern period 2
+    When Click Step Evolve
+    Then Universe Should Display Beacon Pattern
 
 *** Keywords ***
 Page Should Contain Universe With ${dimension} Dimension
@@ -39,11 +41,11 @@ Click To Set Live Cell Boat Pattern
     Click Element    cell-3-2
 
 Universe Should Display Boat Pattern
-    Element Should Be Visible    css=#cell-1-1.active
-    Element Should Be Visible    css=#cell-1-2.active
-    Element Should Be Visible    css=#cell-2-1.active
-    Element Should Be Visible    css=#cell-2-3.active
-    Element Should Be Visible    css=#cell-3-2.active
+    Page Should Contain Element    css=#cell-1-1.active
+    Page Should Contain Element    css=#cell-1-2.active
+    Page Should Contain Element    css=#cell-2-1.active
+    Page Should Contain Element    css=#cell-2-3.active
+    Page Should Contain Element    css=#cell-3-2.active
 
 Click To Set Live Cell Beacon Pattern
     Click Element    cell-1-1
