@@ -1,0 +1,19 @@
+*** Settings ***
+Library           Selenium2Library
+Suite Setup       Open Page
+Suite Teardown    Close All Browsers
+
+*** variables ***
+${HOST}           http://127.0.0.1:3333
+${PAGE}           /index.html
+${BROWSER}        gc
+
+*** Test Cases ***
+Basic
+    Page Should Contain    Game of Life in Javascript and AngularJS
+
+
+*** Keywords ***
+Open Page
+    Open Browser    ${HOST}${PAGE}   browser=${BROWSER}
+    Maximize Browser Window

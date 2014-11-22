@@ -1,1 +1,5 @@
 node_modules/
+log.html
+report.html
+output.xml
+*.png

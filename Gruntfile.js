@@ -12,8 +12,20 @@ module.exports = function(grunt) {
             dev: {
                 reporters: 'dots'
             }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 3333,
+                    keepalive: true,
+                    debug: true
+                }
+            }
         }
     });
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
+    grunt.registerTask('serve', ['connect:server']);
     grunt.registerTask('default', ['karma:dev']);
 }
