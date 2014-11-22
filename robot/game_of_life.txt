@@ -24,6 +24,20 @@ Evolve
     When Click Step Evolve
     Then Universe Should Display Beacon Pattern
 
+Auto Evolve
+    [Documentation]    Click Evolve will set interval for evolve and click again will reset it
+    Given Go To    ${HOST}
+    When Click To Set Live Cell Beacon Pattern
+    Then Universe Should Display Beacon Pattern
+    When Click Evolve
+    Then Step Evolve Should Be Disabled
+    Then Universe Should Display Beacon Pattern period 2
+    And Universe Should Display Beacon Pattern
+    And Universe Should Display Beacon Pattern period 2
+    When Click Evolve
+    Then Universe Should Display Beacon Pattern period 2
+    And Universe Should Display Beacon Pattern period 2
+
 *** Keywords ***
 Page Should Contain Universe With ${height} x ${width} Dimension
     Page Should Contain Element     cell-${height}-${width}
@@ -56,25 +70,35 @@ Click Step Evolve
     Click Button    step-evolve
 
 Universe Should Display Beacon Pattern
-    Page Should Contain Element    css=#cell-1-1.active
-    Page Should Contain Element    css=#cell-1-2.active
-    Page Should Contain Element    css=#cell-2-1.active
-    Page Should Contain Element    css=#cell-2-2.active
-    Page Should Contain Element    css=#cell-3-3.active
-    Page Should Contain Element    css=#cell-3-4.active
-    Page Should Contain Element    css=#cell-4-3.active
-    Page Should Contain Element    css=#cell-4-4.active
+    Wait    Page Should Contain Element    css=#cell-1-1.active
+    Wait    Page Should Contain Element    css=#cell-1-2.active
+    Wait    Page Should Contain Element    css=#cell-2-1.active
+    Wait    Page Should Contain Element    css=#cell-2-2.active
+    Wait    Page Should Contain Element    css=#cell-3-3.active
+    Wait    Page Should Contain Element    css=#cell-3-4.active
+    Wait    Page Should Contain Element    css=#cell-4-3.active
+    Wait    Page Should Contain Element    css=#cell-4-4.active
 
 Universe Should Display Beacon Pattern period 2
-    Page Should Contain Element    css=#cell-1-1.active
-    Page Should Contain Element    css=#cell-1-2.active
-    Page Should Contain Element    css=#cell-2-1.active
-    Page Should Not Contain Element    css=#cell-2-2.active
-    Page Should Not Contain Element    css=#cell-3-3.active
-    Page Should Contain Element    css=#cell-3-4.active
-    Page Should Contain Element    css=#cell-4-3.active
-    Page Should Contain Element    css=#cell-4-4.active
+    Wait    Page Should Contain Element    css=#cell-1-1.active
+    Wait    Page Should Contain Element    css=#cell-1-2.active
+    Wait    Page Should Contain Element    css=#cell-2-1.active
+    Wait    Page Should Not Contain Element    css=#cell-2-2.active
+    Wait    Page Should Not Contain Element    css=#cell-3-3.active
+    Wait    Page Should Contain Element    css=#cell-3-4.active
+    Wait    Page Should Contain Element    css=#cell-4-3.active
+    Wait    Page Should Contain Element    css=#cell-4-4.active
+
+Click Evolve
+    Click Button    evolve
+
+Step Evolve Should Be Disabled
+    Element Should Be Disabled    step-evolve
 
 Open Page
     Open Browser    ${HOST}${PAGE}   browser=${BROWSER}
     Maximize Browser Window
+
+Wait
+    [Arguments]    @{args}
+    Wait Until Keyword Succeeds    1s    0.2s     @{args}

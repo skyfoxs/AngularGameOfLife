@@ -1,5 +1,5 @@
 describe("GameController", function() {
-    var controller, Universe,
+    var controller, Universe, $interval,
         cell = {
             LIVE: true
         };
@@ -10,7 +10,11 @@ describe("GameController", function() {
     });
 
     function createController($controller, _Universe_) {
-        controller = $controller("GameController", {});
+        $interval = jasmine.createSpy('$interval');
+        controller = $controller("GameController", {
+            $interval: $interval,
+            Universe: _Universe_
+        });
         Universe = _Universe_;
     }
 
@@ -28,5 +32,22 @@ describe("GameController", function() {
         spyOn(controller.universe, "evolve");
         controller.nextStep();
         expect(controller.universe.evolve).toHaveBeenCalled();
+    });
+
+    it("should call $interval when click evolve", function() {
+        controller.isRunning = false;
+        spyOn(controller.universe, "evolve");
+        controller.evolve();
+        expect($interval).toHaveBeenCalledWith(jasmine.any(Function), 300);
+        expect(controller.isRunning).toEqual(true);
+    });
+
+    it("should cancel $interval when click evolve again", function() {
+        controller.isRunning = true;
+        $interval.cancel = function() {};
+        spyOn($interval, "cancel");
+        controller.evolve();
+        expect($interval.cancel).toHaveBeenCalledWith(controller.interval);
+        expect(controller.isRunning).toEqual(false);
     });
 });

@@ -20,6 +20,7 @@ h1 {
 .container {
     margin-top: 20px;
 }
+
 button {
     font-size: 16px;
     background: #54ACD2;
@@ -35,6 +36,17 @@ button:hover {
     cursor: pointer;
     background: black;
 }
+button.start:before{
+    content: "Start ";
+}
+button.stop:before{
+    content: "Stop ";
+}
+button:disabled{
+    cursor: not-allowed;
+    background: #D1D5D8;
+}
+
 .clear { clear: both; }
 a {
     color: #28324E;

@@ -51,7 +51,8 @@ function jshintConfig() {
                 describe: true,
                 it: true,
                 expect: true,
-                spyOn: true
+                spyOn: true,
+                jasmine: true
             }
         }
     };
