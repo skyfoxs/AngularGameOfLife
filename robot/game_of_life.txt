@@ -10,8 +10,8 @@ ${BROWSER}        gc
 *** Test Cases ***
 Basic
     When Open Page
-    Then Page Should Contain    Game of Life in Javascript and AngularJS
-    And Page Should Contain Universe With 25 x 50 Dimension
+    Then Page Should Contain    Game of Life with Javascript and AngularJS
+    And Page Should Contain Universe With 25 x 40 Dimension
     When Click To Set Live Cell Boat Pattern
     Then Universe Should Display Boat Pattern
 

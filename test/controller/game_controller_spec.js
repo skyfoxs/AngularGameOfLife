@@ -15,7 +15,7 @@ describe("GameController", function() {
     }
 
     it("should init with 25x50 dimension universe", function() {
-        var expected = new Universe(25, 50);
+        var expected = new Universe(25, 40);
         expect(controller.universe.cells).toEqual(expected.cells);
     });
 

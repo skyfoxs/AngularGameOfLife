@@ -7,7 +7,7 @@ angular.module("GameOfLife").controller("GameController", params);
 function GameController(Universe) {
     "use strict";
     this.init = function() {
-        this.universe = new Universe(25, 50);
+        this.universe = new Universe(25, 40);
     }
 
     this.setLiveCell = function(x, y) {
