@@ -2,5 +2,4 @@ node_modules/
 log.html
 report.html
 output.xml
-*.png
 .DS_Store
